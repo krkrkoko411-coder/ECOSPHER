@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EcoSphere — Technology for a Greener Tomorrow</title>
+<meta name="description" content="EcoSphere is an interactive educational web project exploring how climate change and technology combine to build smarter, more sustainable futures." />
+<meta name="theme-color" content="#10a36d" />
+<meta property="og:title" content="EcoSphere — Technology for a Greener Tomorrow" />
+<meta property="og:description" content="An interactive educational experience about climate change, green technology and smart resource management." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2310a36d'/%3E%3Cpath d='M32 6a26 26 0 0 1 0 52 26 26 0 0 1 0-52zM32 6a26 26 0 0 0 0 52M4 24h56M4 40h56' fill='none' stroke='%23d8fff0' stroke-width='2'/%3E%3Cpath d='M20 40c14 0 22-8 24-22-16 0-24 8-24 22z' fill='%23ffffff'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4C10 4 4 9 4 17c0 1.7.4 3 1 4 1.6-6.6 5.6-10.4 11.4-12.2C11 11 7.6 14.4 6 20c1 .6 2.2 1 3.5 1C17 21 20 14 20 4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 21c1-2 2-3.5 3.5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+<symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8h10a3 3 0 1 0-3-3M3 12h14a3 3 0 1 1-3 3M3 16h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.2 6 10.4A6 6 0 0 1 6 13.4C6 9.2 12 3 12 3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.5 14a2.6 2.6 0 0 0 2.5 2.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3s5 4 5 8a5 5 0 0 1-10 0c0-1.7.8-3 1.6-4 .3 1.2 1 2 1.9 2 1.4 0 1.5-2.4 1.5-6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a3.5 3.5 0 0 0 .3-7 5 5 0 0 0-9.6-1.3A3.6 3.6 0 0 0 7 18Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.5 2 5 13.5h5L10 22l8.5-11.5h-5L13.5 2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5l8-3 8 3v16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 21v-5h6v5M8 9h2M14 9h2M8 13h2M14 13h2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-recycle" viewBox="0 0 24 24"><path d="m8 6 2.2-3.4a2 2 0 0 1 3.4 0L16 6M13 4.5 16 3l.5 3.4M19 11l1.4 3.5a2 2 0 0 1-1.8 2.8h-3.2M16.5 14.4l2 3-3.5.6M11 19l-3 1a2 2 0 0 1-2-2.1V15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5 21.5 20h-19L12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 10v4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="17.4" r="1" fill="currentColor"/></symbol>
+<symbol id="i-thermo" viewBox="0 0 24 24"><path d="M14 14.8V5a2.5 2.5 0 1 0-5 0v9.8a4.2 4.2 0 1 0 5 0Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="11.5" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+<symbol id="i-sensor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 4.5a7.5 7.5 0 0 1 7.5 7.5M12 7.5a4.5 4.5 0 0 1 4.5 4.5M12 19.5A7.5 7.5 0 0 1 4.5 12M12 16.5a4.5 4.5 0 0 1-4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-seedling" viewBox="0 0 24 24"><path d="M12 21v-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 13C12 9 9 6 4 6c0 5 3 7 8 7Zm0 0c0-3.6 2.7-6 7-6 0 4.3-2.6 6-7 6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 21h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-monitor" viewBox="0 0 24 24"><path d="M3 5h18v11H3zM8 20h8M12 16v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6.5 12.5 9 10l2.2 2 3-3.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-bike" viewBox="0 0 24 24"><circle cx="6" cy="16.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="16.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m6 16.5 4-8h4l4 8M9 8.5h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-walk" viewBox="0 0 24 24"><circle cx="13" cy="4.5" r="1.9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 21l2.2-5.6L10 12.5V9m2.2 6.4 2.4 2 1.4 3.6M10 9l3-1.4 2.2 2.6 2.3.9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-bus" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="13" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 11h16M8 20l-1.5-3M16 20l1.5-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="8.2" cy="14.4" r="1" fill="currentColor"/><circle cx="15.8" cy="14.4" r="1" fill="currentColor"/></symbol>
+<symbol id="i-car" viewBox="0 0 24 24"><path d="M3 16v-3.2L5.4 8h13.2L21 12.8V16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><rect x="3" y="16" width="18" height="3" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+<symbol id="i-ev" viewBox="0 0 24 24"><path d="M3 16v-3.2L5.4 8h13.2L21 12.8V16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><rect x="3" y="16" width="18" height="3" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11.6 9.6 9.4 12.4h2.6l-.6 2.6 2.6-3.2h-2.6Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+<symbol id="i-code" viewBox="0 0 24 24"><path d="m8.5 8-4.5 4 4.5 4M15.5 8l4.5 4-4.5 4M13.4 5.5l-2.8 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0 0 18c1.4 0 2-.9 2-1.8 0-1.5-1.2-1.8-1.2-3 0-.9.7-1.7 1.8-1.7h2A4.7 4.7 0 0 0 21 9.8C21 5.9 17 3 12 3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="8" cy="10" r="1.2" fill="currentColor"/><circle cx="12" cy="7.5" r="1.2" fill="currentColor"/><circle cx="16" cy="10" r="1.2" fill="currentColor"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M12.5 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.6 2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.7l5.8-.8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.4 3 7.9 7 9 4-1.1 7-4.6 7-9V6l-7-3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2.2 2.2L15.4 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 5.2A3.2 3.2 0 0 0 6 6.6 3 3 0 0 0 4.2 12 3.2 3.2 0 0 0 7 18.6 3 3 0 0 0 12 19.4ZM12 5.2A3.2 3.2 0 0 1 18 6.6 3 3 0 0 1 19.8 12 3.2 3.2 0 0 1 17 18.6 3 3 0 0 1 12 19.4ZM12 5.2v14.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M16.5 5.4a3.2 3.2 0 0 1 0 5.6M18 14.8c2 .7 3.4 2.5 3.4 5.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-waves" viewBox="0 0 24 24"><path d="M2 8.5c2.5-2.4 4.5-2.4 7 0s4.5 2.4 7 0 4.5-2.4 6 0M2 13.5c2.5-2.4 4.5-2.4 7 0s4.5 2.4 7 0 4.5-2.4 6 0M2 18.5c2.5-2.4 4.5-2.4 7 0s4.5 2.4 7 0 4.5-2.4 6 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 8.5 4.5L12 12 3.5 7.5 12 3Zm8.5 9L12 16.5 3.5 12M20.5 16.5 12 21 3.5 16.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="brand" href="#home" aria-label="EcoSphere — go to top">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" focusable="false">
+          <circle class="bm-globe" cx="24" cy="24" r="19" />
+          <ellipse class="bm-line" cx="24" cy="24" rx="8" ry="19" />
+          <path class="bm-line" d="M5.5 24h37M8 14.5h32M8 33.5h32" />
+          <path class="bm-leaf" d="M38.5 11c-10.6 0-16.4 5.4-16.4 13.7 0 1.6.3 3 .8 4 1.2-6.9 5.2-10.8 10.8-12.2-6.4 2.4-11.2 6.5-13.2 13.3 1.3.6 2.6.8 4 .8 8.8 0 14.7-7.9 14-19.6Z" />
+          <circle class="bm-node" cx="24" cy="5" r="1.8" /><circle class="bm-node" cx="43" cy="24" r="1.8" />
+          <circle class="bm-node" cx="24" cy="43" r="1.8" /><circle class="bm-node" cx="5" cy="24" r="1.8" />
+        </svg>
+      </span>
+      <span class="brand-text"><span class="brand-eco">Eco</span><span class="brand-sphere">Sphere</span></span>
+    </a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Main">
+      <ul class="nav-list" id="navList">
+        <li><a class="nav-link is-active" href="#home" data-nav="home">Home</a></li>
+        <li><a class="nav-link" href="#climate" data-nav="climate">Climate</a></li>
+        <li><a class="nav-link" href="#calculator" data-nav="calculator">Eco Calculator</a></li>
+        <li><a class="nav-link" href="#technology" data-nav="technology">Green Technology</a></li>
+        <li><a class="nav-link" href="#agriculture" data-nav="agriculture">Smart Agriculture</a></li>
+        <li><a class="nav-link" href="#transportation" data-nav="transportation">Transportation</a></li>
+        <li><a class="nav-link" href="#tips" data-nav="tips">Eco Tips</a></li>
+        <li><a class="nav-link" href="#challenge" data-nav="challenge">Climate Challenge</a></li>
+        <li><a class="nav-link" href="#about" data-nav="about">About</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language to Arabic" title="Switch language">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-globe"></use></svg>
+        <span class="lang-label" id="langLabel">عربي</span>
+      </button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+        <span class="tt-track" aria-hidden="true">
+          <span class="tt-icon tt-sun"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sun"></use></svg></span>
+          <span class="tt-icon tt-moon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-moon"></use></svg></span>
+          <span class="tt-thumb"></span>
+        </span>
+      </button>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
+        <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"><span id="scrollBar"></span></div>
+</header>
+<div class="nav-overlay" id="navOverlay" hidden></div>
+
+<!-- ======================= SIDEBAR ======================= -->
+<aside class="sidebar" id="sidebar" aria-label="Sidebar" aria-hidden="true">
+  <div class="sidebar-head">
+    <a class="brand" href="#home" aria-label="EcoSphere home" data-scroll>
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" focusable="false">
+          <circle class="bm-globe" cx="24" cy="24" r="19" />
+          <ellipse class="bm-line" cx="24" cy="24" rx="8" ry="19" />
+          <path class="bm-line" d="M5.5 24h37M8 14.5h32M8 33.5h32" />
+          <path class="bm-leaf" d="M38.5 11c-10.6 0-16.4 5.4-16.4 13.7 0 1.6.3 3 .8 4 1.2-6.9 5.2-10.8 10.8-12.2-6.4 2.4-11.2 6.5-13.2 13.3 1.3.6 2.6.8 4 .8 8.8 0 14.7-7.9 14-19.6Z" />
+          <circle class="bm-node" cx="24" cy="5" r="1.8" /><circle class="bm-node" cx="43" cy="24" r="1.8" />
+          <circle class="bm-node" cx="24" cy="43" r="1.8" /><circle class="bm-node" cx="5" cy="24" r="1.8" />
+        </svg>
+      </span>
+      <span class="brand-text"><span class="brand-eco">Eco</span><span class="brand-sphere">Sphere</span></span>
+    </a>
+    <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close sidebar">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-x"></use></svg>
+    </button>
+  </div>
+
+  <p class="sidebar-tagline" data-i18n="side.tagline">Technology for a Greener Tomorrow</p>
+
+  <nav class="sidebar-nav" aria-label="Sidebar navigation">
+    <a class="side-link" href="#home" data-scroll data-i18n="nav.home">Home</a>
+    <a class="side-link" href="#climate" data-scroll data-i18n="nav.climate">Climate</a>
+    <a class="side-link" href="#dashboard" data-scroll data-i18n="nav.dashboard">Dashboard</a>
+    <a class="side-link" href="#calculator" data-scroll data-i18n="nav.calculator">Eco Calculator</a>
+    <a class="side-link" href="#technology" data-scroll data-i18n="nav.technology">Green Technology</a>
+    <a class="side-link" href="#agriculture" data-scroll data-i18n="nav.agriculture">Smart Agriculture</a>
+    <a class="side-link" href="#transportation" data-scroll data-i18n="nav.transportation">Transportation</a>
+    <a class="side-link" href="#tips" data-scroll data-i18n="nav.tips">Eco Tips</a>
+    <a class="side-link" href="#challenge" data-scroll data-i18n="nav.challenge">Climate Challenge</a>
+    <a class="side-link" href="#about" data-scroll data-i18n="nav.about">About</a>
+  </nav>
+
+  <div class="sidebar-foot">
+    <div class="sidebar-actions">
+      <button class="side-action" id="sideLangBtn" type="button" data-i18n="side.switchLang">العربية</button>
+      <button class="side-action" id="sideThemeBtn" type="button" data-i18n="side.switchTheme">Dark Mode</button>
+    </div>
+    <p class="sidebar-note" data-i18n="side.note">HTML5 · CSS3 · JavaScript</p>
+  </div>
+</aside>
+
+<main id="main">
+
+<section class="section hero" id="home" aria-labelledby="heroTitle">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="orb orb-a"></span><span class="orb orb-b"></span>
+    <span class="grid-lines"></span>
+  </div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow reveal"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-leaf"></use></svg>
+        Interactive Educational Project · Climate Change &amp; Technology</p>
+      <h1 class="hero-title reveal" id="heroTitle">
+        <span class="brand-eco">Eco</span><span class="brand-sphere">Sphere</span>
+      </h1>
+      <p class="hero-slogan reveal">Technology for a Greener Tomorrow</p>
+      <p class="hero-slogan ar reveal" lang="ar" dir="rtl">تكنولوجيا تصنع مستقبلًا أكثر اخضارًا</p>
+      <p class="hero-lead reveal">
+        <strong>Technology can be more than a tool. It can be part of the solution.</strong>
+      </p>
+      <p class="hero-text reveal">
+        Climate change affects people, ecosystems, water, agriculture, energy and communities.
+        EcoSphere shows how modern technology — sensors, software, smart grids and digital
+        monitoring — helps us measure these changes, reduce resource waste and respond with
+        practical, data-driven solutions.
+      </p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="#climate" data-scroll>Explore EcoSphere <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a>
+        <a class="btn btn-ghost" href="#calculator" data-scroll>Calculate My Eco Score</a>
+      </div>
+      <dl class="hero-stats reveal">
+        <div class="stat"><dt>Learning Modules</dt><dd><span class="counter" data-count-to="9">0</span></dd></div>
+        <div class="stat"><dt>Interactive Tools</dt><dd><span class="counter" data-count-to="6">0</span></dd></div>
+        <div class="stat"><dt>Quiz Questions</dt><dd><span class="counter" data-count-to="8">0</span></dd></div>
+      </dl>
+    </div>
+
+    <div class="hero-visual reveal" aria-hidden="true">
+      <div class="viz">
+        <span class="viz-ring r1"></span><span class="viz-ring r2"></span><span class="viz-ring r3"></span>
+        <span class="viz-orbit orbit-a"><i></i></span>
+        <span class="viz-orbit orbit-b"><i></i></span>
+        <span class="viz-orbit orbit-c"><i></i></span>
+        <div class="viz-core">
+          <svg viewBox="0 0 200 200" focusable="false">
+            <defs><linearGradient id="gLeaf" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#34d399" /><stop offset="1" stop-color="#a7f3d0" />
+            </linearGradient></defs>
+            <circle cx="100" cy="100" r="86" fill="url(#gLeaf)" opacity=".18" />
+            <circle cx="100" cy="100" r="66" fill="none" stroke="#6ee7b7" stroke-width="1.4" opacity=".85" />
+            <ellipse cx="100" cy="100" rx="27" ry="66" fill="none" stroke="#93c5fd" stroke-width="1.2" opacity=".7" />
+            <path d="M34 100h132M42 66h116M42 134h116" stroke="#93c5fd" stroke-width="1.2" opacity=".7" fill="none" />
+            <path d="M145 55c-26 0-40 13-40 33 0 3.6.7 6.8 1.8 9.4 3.4-17 14-27 30-31-16 6-27 15-32 32 3.2 1.6 6.4 2 9.6 2 22 0 36-19.5 30.6-45.4Z" fill="url(#gLeaf)" />
+            <path d="M64 142c8-9 13-14 19-18" stroke="#eafff4" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8" />
+          </svg>
+        </div>
+        <span class="viz-node n1"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-bolt"></use></svg></span>
+        <span class="viz-node n2"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-drop"></use></svg></span>
+        <span class="viz-node n3"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sensor"></use></svg></span>
+        <span class="viz-node n4"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-leaf"></use></svg></span>
+        <span class="viz-node n5"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-globe"></use></svg></span>
+      </div>
+    </div>
+  </div>
+  <a class="scroll-hint" href="#climate" data-scroll aria-label="Scroll to climate section">
+    <span class="sh-line"></span><span class="sh-text">Scroll</span>
+  </a>
+</section>
+
+<!-- ======================= CLIMATE ======================= -->
+<section class="section" id="climate" aria-labelledby="climateTitle">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-globe"></use></svg> Chapter 01</p>
+      <h2 id="climateTitle">Understanding the Climate Challenge</h2>
+      <p class="section-lead">
+        Climate change is not a single problem — it is a system of connected pressures.
+        Below are six major challenge areas. Select any card to open a short explanation.
+      </p>
+    </header>
+
+    <div class="grid grid-3" id="climateGrid">
+      <article class="card climate-card reveal" data-climate="Climate Change" data-cc="cc-0">
+        <span class="card-icon ci-green"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-thermo"></use></svg></span>
+        <h3>Climate Change</h3>
+        <p>A long-term shift in average weather patterns that reshapes ecosystems, seasons and rainfall.</p>
+        <button class="card-more" type="button" aria-expanded="false">Learn more <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></button>
+        <span class="card-detail" id="cc-0" hidden></span>
+      </article>
+
+      <article class="card climate-card reveal" data-climate="Global Warming" data-cc="cc-1">
+        <span class="card-icon ci-red"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-flame"></use></svg></span>
+        <h3>Global Warming</h3>
+        <p>The steady rise in average surface temperature caused by extra heat trapped in the atmosphere.</p>
+        <button class="card-more" type="button" aria-expanded="false">Learn more <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></button>
+        <span class="card-detail" id="cc-1" hidden></span>
+      </article>
+
+      <article class="card climate-card reveal" data-climate="Extreme Weather" data-cc="cc-2">
+        <span class="card-icon ci-amber"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cloud"></use></svg></span>
+        <h3>Extreme Weather</h3>
+        <p>Unusually intense heat, storms, droughts or rainfall events linked to a changing climate.</p>
+        <button class="card-more" type="button" aria-expanded="false">Learn more <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></button>
+        <span class="card-detail" id="cc-2" hidden></span>
+      </article>
+
+      <article class="card climate-card reveal" data-climate="Water Stress" data-cc="cc-3">
+        <span class="card-icon ci-blue"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-drop"></use></svg></span>
+        <h3>Water Stress</h3>
+        <p>Growing demand and uneven supply put pressure on rivers, aquifers and drinking water.</p>
+        <button class="card-more" type="button" aria-expanded="false">Learn more <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></button>
+        <span class="card-detail" id="cc-3" hidden></span>
+      </article>
+
+      <article class="card climate-card reveal" data-climate="Energy Consumption" data-cc="cc-4">
+        <span class="card-icon ci-violet"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-bolt"></use></svg></span>
+        <h3>Energy Consumption</h3>
+        <p>How electricity is generated and used across homes, cities and industry.</p>
+        <button class="card-more" type="button" aria-expanded="false">Learn more <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></button>
+        <span class="card-detail" id="cc-4" hidden></span>
+      </article>
+
+      <article class="card climate-card reveal" data-climate="Environmental Pollution" data-cc="cc-5">
+        <span class="card-icon ci-teal"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alert"></use></svg></span>
+        <h3>Environmental Pollution</h3>
+        <p>Air, water and soil contamination produced by waste, industry and heavy transport.</p>
+        <button class="card-more" type="button" aria-expanded="false">Learn more <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></button>
+        <span class="card-detail" id="cc-5" hidden></span>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- ======================= CLIMATE FACTS (VERIFIED) ======================= -->
+<section class="section section-alt" id="dashboard" aria-labelledby="dashTitle">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-shield"></use></svg> Verified Science</p>
+      <h2 id="dashTitle">The Climate, Measured</h2>
+      <p class="section-lead">
+        These are real findings from the scientific record, not invented numbers.
+        Every figure below comes from the IPCC Sixth Assessment Report (AR6, 2023).
+      </p>
+      <p class="data-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alert"></use></svg>
+        <strong>Source: IPCC AR6 Synthesis Report, 2023</strong> — the Sixth Assessment Report of the
+        Intergovernmental Panel on Climate Change, approved line by line by 193 member governments.</p>
+    </header>
+
+    <div class="fact-grid" id="factGrid"></div>
+
+    <p class="fact-foot reveal">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>
+      Every figure shown here is quoted from the IPCC AR6 Synthesis Report (2023), approved line by
+      line by 193 member governments. EcoSphere presents no invented or illustrative statistics as fact.
+    </p>
+  </div>
+</section>
+
+
+<!-- ======================= ECO CALCULATOR ======================= -->
+<section class="section" id="calculator" aria-labelledby="calcTitle">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-target"></use></svg> Chapter 02 · Interactive Tool</p>
+      <h2 id="calcTitle">Eco Calculator</h2>
+      <p class="section-lead">
+        Answer a few everyday questions about energy, water, transport and habits.
+        EcoSphere turns your answers into a personalised <strong>Eco Score</strong> out of 100,
+        together with practical suggestions you can start using today.
+      </p>
+    </header>
+
+    <div class="calc-layout">
+      <form class="calc-form card reveal" id="ecoForm" novalidate>
+        <p class="form-error" id="formError" role="alert" hidden>Please complete every question before calculating your score.</p>
+
+        <fieldset class="field">
+          <legend>1. How much electricity does your household use?</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="electricity" value="low" /><span>Low — 1–2 appliances, mindful use</span></label>
+            <label class="opt"><input type="radio" name="electricity" value="medium" /><span>Medium — typical daily household use</span></label>
+            <label class="opt"><input type="radio" name="electricity" value="high" /><span>High — many appliances, long hours</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>2. How many electronic devices do you use regularly?</legend>
+          <div class="opts opts-inline">
+            <label class="opt"><input type="radio" name="devices" value="1" /><span>1–2 devices</span></label>
+            <label class="opt"><input type="radio" name="devices" value="3" /><span>3–5 devices</span></label>
+            <label class="opt"><input type="radio" name="devices" value="5" /><span>6 or more devices</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>3. How would you describe your water usage?</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="water" value="low" /><span>Low — short showers, taps rarely running</span></label>
+            <label class="opt"><input type="radio" name="water" value="medium" /><span>Medium — average household routines</span></label>
+            <label class="opt"><input type="radio" name="water" value="high" /><span>High — frequent and long use</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>4. What is your main mode of transportation?</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="transport" value="walk" /><span>Walking or cycling</span></label>
+            <label class="opt"><input type="radio" name="transport" value="public" /><span>Public transportation</span></label>
+            <label class="opt"><input type="radio" name="transport" value="ev" /><span>Electric vehicle</span></label>
+            <label class="opt"><input type="radio" name="transport" value="fuel" /><span>Conventional fuel vehicle</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>5. How often do you travel with this method?</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="frequency" value="rare" /><span>Rarely — a few times a week</span></label>
+            <label class="opt"><input type="radio" name="frequency" value="normal" /><span>Regularly — most days</span></label>
+            <label class="opt"><input type="radio" name="frequency" value="often" /><span>Frequently — long daily distances</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>6. How are your recycling habits?</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="recycling" value="good" /><span>Good — I separate and recycle regularly</span></label>
+            <label class="opt"><input type="radio" name="recycling" value="some" /><span>Some — only for certain materials</span></label>
+            <label class="opt"><input type="radio" name="recycling" value="low" /><span>Limited — recycling is rare for me</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>7. How often do you follow energy-saving habits?</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="habits" value="always" /><span>Always — lights off, devices unplugged</span></label>
+            <label class="opt"><input type="radio" name="habits" value="often" /><span>Often — when I remember</span></label>
+            <label class="opt"><input type="radio" name="habits" value="rare" /><span>Rarely — I rarely think about it</span></label>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-lg">Calculate My Eco Score</button>
+          <button type="button" class="btn btn-ghost btn-lg" id="resetCalc">Recalculate</button>
+        </div>
+      </form>
+      <div class="calc-result" id="calcResult" aria-live="polite">
+        <div class="score-card card reveal">
+          <p class="score-label">Your Eco Score</p>
+          <div class="score-ring">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <circle class="sr-track" cx="100" cy="100" r="86" />
+              <circle class="sr-fill" id="scoreRing" cx="100" cy="100" r="86" />
+            </svg>
+            <div class="score-num"><span id="scoreValue">0</span><small>/100</small></div>
+          </div>
+          <p class="score-profile" id="scoreProfile">Complete the form to see your personalised profile.</p>
+          <p class="score-note">This score is an educational self-assessment, not a scientific measurement.</p>
+        </div>
+
+        <div class="breakdown card reveal">
+          <h3 class="panel-title">Environmental Profile</h3>
+          <ul class="bd-list" id="breakdownList">
+            <li class="bd-item"><span class="bd-name">Energy</span><span class="bar"><i class="bar-fill" data-fill="0" id="bdEnergy"></i></span><span class="bd-val">–</span></li>
+            <li class="bd-item"><span class="bd-name">Water</span><span class="bar"><i class="bar-fill" data-fill="0" id="bdWater"></i></span><span class="bd-val">–</span></li>
+            <li class="bd-item"><span class="bd-name">Transport</span><span class="bar"><i class="bar-fill" data-fill="0" id="bdTransport"></i></span><span class="bd-val">–</span></li>
+            <li class="bd-item"><span class="bd-name">Waste</span><span class="bar"><i class="bar-fill" data-fill="0" id="bdWaste"></i></span><span class="bd-val">–</span></li>
+            <li class="bd-item"><span class="bd-name">Habits</span><span class="bar"><i class="bar-fill" data-fill="0" id="bdHabits"></i></span><span class="bd-val">–</span></li>
+          </ul>
+        </div>
+
+        <div class="recs card reveal" id="recsCard">
+          <h3 class="panel-title"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-star"></use></svg> Personalised Recommendations</h3>
+          <ul class="rec-list" id="recList">
+            <li class="rec-item is-empty">Your recommendations will appear here after you calculate your score.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= GREEN TECHNOLOGY ======================= -->
+<section class="section section-alt" id="technology" aria-labelledby="techTitle">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-bolt"></use></svg> Chapter 03</p>
+      <h2 id="techTitle">Green Technology</h2>
+      <p class="section-lead">
+        Green technology means using engineering and digital systems to reduce environmental impact.
+        Select any card to open a detailed explanation.
+      </p>
+    </header>
+
+    <div class="grid grid-3" id="techGrid">
+      <article class="card tech-card reveal" data-tech="solar" data-tc="tc-solar">
+        <span class="card-icon ci-amber"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sun"></use></svg></span>
+        <h3>Solar Energy</h3>
+        <p>Converts sunlight into electricity through photovoltaic cells, with no fuel burned during operation.</p>
+        <span class="card-more">Open details <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></span>
+        <span class="card-detail" id="tc-solar" hidden>
+          <strong>What is it?</strong> Panels that turn light into current.<br>
+          <strong>How it works?</strong> Photovoltaic cells release electrons when struck by light.<br>
+          <strong>Technology's role?</strong> Inverters, smart meters and weather-monitoring software improve output and balance supply.<br>
+          <strong>Addresses?</strong> Energy-related emissions.
+        </span>
+      </article>
+
+      <article class="card tech-card reveal" data-tech="wind" data-tc="tc-wind">
+        <span class="card-icon ci-blue"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-wind"></use></svg></span>
+        <h3>Wind Energy</h3>
+        <p>Uses turbine blades driven by moving air to generate power without direct emissions.</p>
+        <span class="card-more">Open details <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></span>
+        <span class="card-detail" id="tc-wind" hidden>
+          <strong>What is it?</strong> A rotor and generator driven by wind.<br>
+          <strong>How it works?</strong> Aerodynamic lift spins the blades, turning a shaft connected to a generator.<br>
+          <strong>Technology's role?</strong> Sensors adjust blade angle to match wind speed and protect the turbine.<br>
+          <strong>Addresses?</strong> Fossil-fuel dependence.
+        </span>
+      </article>
+
+      <article class="card tech-card reveal" data-tech="grid" data-tc="tc-grid">
+        <span class="card-icon ci-violet"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-grid"></use></svg></span>
+        <h3>Smart Grids</h3>
+        <p>An electrical network that monitors and balances supply and demand using digital control.</p>
+        <span class="card-more">Open details <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></span>
+        <span class="card-detail" id="tc-grid" hidden>
+          <strong>What is it?</strong> A network with sensors, meters and automated control software.<br>
+          <strong>How it works?</strong> Real-time data guides where power flows and when storage is charged.<br>
+          <strong>Technology's role?</strong> Automation reduces waste and integrates variable renewable sources.<br>
+          <strong>Addresses?</strong> Energy efficiency and grid stability.
+        </span>
+      </article>
+
+      <article class="card tech-card reveal" data-tech="building" data-tc="tc-building">
+        <span class="card-icon ci-green"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-building"></use></svg></span>
+        <h3>Green Buildings</h3>
+        <p>Structures designed to use less energy through insulation, efficient systems and smart controls.</p>
+        <span class="card-more">Open details <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></span>
+        <span class="card-detail" id="tc-building" hidden>
+          <strong>What is it?</strong> Buildings engineered around efficiency and low-impact materials.<br>
+          <strong>How it works?</strong> Sensors adjust lighting, heating and cooling according to real occupancy.<br>
+          <strong>Technology's role?</strong> Building-management systems tune conditions automatically.<br>
+          <strong>Addresses?</strong> Urban energy demand.
+        </span>
+      </article>
+
+      <article class="card tech-card reveal" data-tech="carbon" data-tc="tc-carbon">
+        <span class="card-icon ci-teal"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-layers"></use></svg></span>
+        <h3>Carbon Capture</h3>
+        <p>Techniques that separate and store carbon dioxide before it reaches the atmosphere.</p>
+        <span class="card-more">Open details <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></span>
+        <span class="card-detail" id="tc-carbon" hidden>
+          <strong>What is it?</strong> Filters and absorption systems that trap carbon dioxide.<br>
+          <strong>How it works?</strong> Gas passes through a material that binds the carbon, then it is stored safely.<br>
+          <strong>Technology's role?</strong> Monitoring verifies that stored carbon stays where intended.<br>
+          <strong>Addresses?</strong> Hard-to-decarbonise industrial emissions.
+        </span>
+      </article>
+
+      <article class="card tech-card reveal" data-tech="monitor" data-tc="tc-monitor">
+        <span class="card-icon ci-red"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-monitor"></use></svg></span>
+        <h3>Digital Environmental Monitoring</h3>
+        <p>Air, water and soil sensors that report conditions so problems are found early.</p>
+        <span class="card-more">Open details <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></span>
+        <span class="card-detail" id="tc-monitor" hidden>
+          <strong>What is it?</strong> Networks of low-cost sensors plus cloud dashboards.<br>
+          <strong>How it works?</strong> Devices sample the environment and send readings to software for analysis.<br>
+          <strong>Technology's role?</strong> Turns invisible changes into visible, actionable information.<br>
+          <strong>Addresses?</strong> Pollution and resource loss.
+        </span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SMART AGRICULTURE ======================= -->
+<section class="section" id="agriculture" aria-labelledby="agriTitle">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seedling"></use></svg> Chapter 04</p>
+      <h2 id="agriTitle">Smart Agriculture</h2>
+      <p class="section-lead">
+        Farming depends on weather, soil and water — all of which technology can measure.
+        Smart agriculture uses that information to make better decisions with fewer resources.
+      </p>
+    </header>
+
+    <div class="grid grid-3 agri-features">
+      <article class="card feature reveal">
+        <span class="card-icon ci-blue"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-drop"></use></svg></span>
+        <h3>Smart Irrigation</h3>
+        <p>Water is delivered only when the crop and the soil actually need it, instead of on a fixed schedule.</p>
+      </article>
+      <article class="card feature reveal">
+        <span class="card-icon ci-green"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-layers"></use></svg></span>
+        <h3>Soil Monitoring</h3>
+        <p>Probes measure moisture, temperature and nutrients so fertiliser is applied only where it helps.</p>
+      </article>
+      <article class="card feature reveal">
+        <span class="card-icon ci-violet"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cloud"></use></svg></span>
+        <h3>Weather Monitoring</h3>
+        <p>Local stations and forecasting tools warn of rain, frost or heat before it affects the harvest.</p>
+      </article>
+      <article class="card feature reveal">
+        <span class="card-icon ci-amber"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sensor"></use></svg></span>
+        <h3>Sensors &amp; IoT</h3>
+        <p>Small networked devices report field conditions continuously instead of relying on occasional visits.</p>
+      </article>
+      <article class="card feature reveal">
+        <span class="card-icon ci-teal"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-waves"></use></svg></span>
+        <h3>Efficient Water Usage</h3>
+        <p>Drip systems and moisture-based control reduce evaporation and the water lost to over-irrigation.</p>
+      </article>
+      <article class="card feature reveal">
+        <span class="card-icon ci-red"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-target"></use></svg></span>
+        <h3>Data-Driven Farming</h3>
+        <p>Records from each season become a map of what worked, guiding the next planting decision.</p>
+      </article>
+    </div>
+
+    <div class="simulator card reveal" id="agriSim">
+      <div class="sim-head">
+        <h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-brain"></use></svg> Agriculture Advisor</h3>
+        <p>Choose the situation your farm is facing and EcoSphere will suggest a technology response.</p>
+      </div>
+      <div class="sim-body">
+        <div class="sim-scenarios" id="agriScenarios" role="radiogroup" aria-label="Choose a farming situation">
+          <button type="button" class="scenario" role="radio" aria-checked="false" data-sit="water"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-drop"></use></svg>High Water Usage</button>
+          <button type="button" class="scenario" role="radio" aria-checked="false" data-sit="heat"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-thermo"></use></svg>Hot Weather</button>
+          <button type="button" class="scenario" role="radio" aria-checked="false" data-sit="dry"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-layers"></use></svg>Low Soil Moisture</button>
+          <button type="button" class="scenario" role="radio" aria-checked="false" data-sit="change"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cloud"></use></svg>Changing Conditions</button>
+        </div>
+        <div class="sim-output" id="agriOutput" role="status" aria-live="polite">
+          <p class="sim-placeholder">Select a situation above to receive a practical recommendation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ======================= TRANSPORTATION ======================= -->
+<section class="section section-alt" id="transportation" aria-labelledby="transTitle">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-bus"></use></svg> Chapter 05</p>
+      <h2 id="transTitle">Sustainable Transportation</h2>
+      <p class="section-lead">
+        How people and goods move shapes energy use and air quality.
+        Select a transport option to see the technology and sustainability considerations behind it.
+      </p>
+    </header>
+
+    <div class="trans-wrap card reveal">
+      <div class="trans-tabs" id="transTabs" role="tablist" aria-label="Transportation options">
+        <button class="trans-tab" role="tab" id="tab-walk" aria-controls="transPanel" aria-selected="true" data-trans="walk"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-walk"></use></svg>Walking</button>
+        <button class="trans-tab" role="tab" id="tab-bike" aria-controls="transPanel" aria-selected="false" tabindex="-1" data-trans="bike"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-bike"></use></svg>Bicycle</button>
+        <button class="trans-tab" role="tab" id="tab-public" aria-controls="transPanel" aria-selected="false" tabindex="-1" data-trans="public"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-bus"></use></svg>Public Transport</button>
+        <button class="trans-tab" role="tab" id="tab-ev" aria-controls="transPanel" aria-selected="false" tabindex="-1" data-trans="ev"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-ev"></use></svg>Electric Vehicle</button>
+        <button class="trans-tab" role="tab" id="tab-fuel" aria-controls="transPanel" aria-selected="false" tabindex="-1" data-trans="fuel"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-car"></use></svg>Conventional Vehicle</button>
+      </div>
+      <div class="trans-panel" id="transPanel" role="tabpanel" aria-labelledby="tab-walk" tabindex="0"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ECO TIPS ======================= -->
+<section class="section" id="tips" aria-labelledby="tipsTitle">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-leaf"></use></svg> Chapter 06</p>
+      <h2 id="tipsTitle">Eco Tips</h2>
+      <p class="section-lead">Small, repeatable actions. Pick one for this week.</p>
+    </header>
+
+    <div class="tips-wrap">
+      <article class="tip-card card reveal" id="tipCard" aria-live="polite">
+        <span class="tip-num" id="tipNum">Tip 01</span>
+        <h3 id="tipTitle">Loading tip…</h3>
+        <p id="tipText">Loading tip…</p>
+        <span class="tip-tag" id="tipTag">Energy</span>
+      </article>
+      <div class="tips-actions reveal">
+        <button class="btn btn-primary" id="nextTip" type="button">Show Another Tip <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></button>
+        <p class="tips-count" id="tipCount">0 tips explored</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= QUIZ ======================= -->
+<section class="section section-alt" id="challenge" aria-labelledby="quizTitle">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-eco-badge"></use></svg> Chapter 07 · Gamified Learning</p>
+      <h2 id="quizTitle">Climate Challenge</h2>
+      <p class="section-lead">
+        Eight questions covering climate, energy, water, agriculture and green technology.
+        Choose the answer that fits best — you will get feedback either way.
+      </p>
+    </header>
+
+    <div class="quiz card reveal" id="quiz">
+      <div class="quiz-top">
+        <div class="quiz-meta">
+          <span>Question <strong id="qNum">1</strong> of <strong id="qTotal">8</strong></span>
+          <span class="quiz-score">Score: <strong id="qScore">0</strong></span>
+        </div>
+        <div class="quiz-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Quiz progress" id="quizBarWrap">
+          <span id="quizBar"></span>
+        </div>
+      </div>
+
+      <div class="quiz-body" id="quizBody">
+        <h3 class="quiz-question" id="qText">Loading question…</h3>
+        <div class="quiz-options" id="qOptions" role="group" aria-label="Answer choices"></div>
+        <p class="quiz-feedback" id="qFeedback" role="status" aria-live="polite" hidden></p>
+      </div>
+
+      <div class="quiz-actions">
+        <button class="btn btn-primary" id="qNext" type="button" disabled>Next Question <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></button>
+        <button class="btn btn-ghost" id="qRestart" type="button" hidden>Restart Challenge</button>
+      </div>
+
+      <div class="quiz-result" id="quizResult" hidden>
+        <div class="qr-score">
+          <span class="qr-num"><span id="qrValue">0</span>%</span>
+          <span class="qr-lbl">Final Score</span>
+        </div>
+        <p class="qr-line" id="qrSummary">You answered 0 of 8 correctly.</p>
+        <p class="qr-feedback" id="qrFeedback"></p>
+        <div class="qr-actions">
+          <button class="btn btn-primary" id="qrRestart" type="button">Restart Challenge</button>
+          <a class="btn btn-ghost" href="#calculator" data-scroll>Try the Eco Calculator</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FLOW ======================= -->
+<section class="section" id="flow" aria-labelledby="flowTitle">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-layers"></use></svg> The Core Idea</p>
+      <h2 id="flowTitle">How Technology Moves the Planet Forward</h2>
+      <p class="section-lead">Every EcoSphere module follows the same six-step chain.</p>
+    </header>
+
+    <ol class="flow" id="flow">
+      <li class="flow-step reveal"><span class="fs-num">01</span><span class="fs-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alert"></use></svg></span>
+        <h3>Climate Challenge</h3><p>Identify the environmental pressure that needs solving.</p></li>
+      <li class="flow-step reveal"><span class="fs-num">02</span><span class="fs-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg></span>
+        <h3>Digital Technology</h3><p>Apply sensors, software and connected devices.</p></li>
+      <li class="flow-step reveal"><span class="fs-num">03</span><span class="fs-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-monitor"></use></svg></span>
+        <h3>Smart Data</h3><p>Collect readings and turn them into clear information.</p></li>
+      <li class="flow-step reveal"><span class="fs-num">04</span><span class="fs-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-brain"></use></svg></span>
+        <h3>Innovation</h3><p>Design a better way to act on that information.</p></li>
+      <li class="flow-step reveal"><span class="fs-num">05</span><span class="fs-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-target"></use></svg></span>
+        <h3>Efficient Resource Use</h3><p>Use less energy, water and material for the same result.</p></li>
+      <li class="flow-step reveal"><span class="fs-num">06</span><span class="fs-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-globe"></use></svg></span>
+        <h3>Sustainable Future</h3><p>Scale what works so the impact lasts.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ======================= WHY ECOSPHERE ======================= -->
+<section class="section section-alt" id="why" aria-labelledby="whyTitle">
+  <div class="container why-layout">
+    <div class="why-copy">
+      <p class="kicker reveal"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-star"></use></svg> Why EcoSphere?</p>
+      <h2 class="reveal" id="whyTitle">Programming turns awareness into action</h2>
+      <p class="reveal">
+        EcoSphere demonstrates how programming and digital technology can transform environmental
+        awareness into an interactive educational experience. Instead of reading about climate
+        change, visitors calculate a score, simulate a farm, compare transport options and test
+        their knowledge — turning passive reading into active learning.
+      </p>
+      <p class="reveal">
+        The project connects five things that are often taught separately: people, technology,
+        knowledge, resources and climate. Bringing them together in one interface shows how
+        a single line of code can make an invisible system visible.
+      </p>
+      <ul class="why-list reveal">
+        <li><span class="why-ic ci-green"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-users"></use></svg></span><div><h3>People</h3><p>Everyday choices by users drive the learning.</p></div></li>
+        <li><span class="why-ic ci-blue"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg></span><div><h3>Technology</h3><p>Vanilla HTML, CSS and JavaScript power each interaction.</p></div></li>
+        <li><span class="why-ic ci-violet"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-brain"></use></svg></span><div><h3>Knowledge</h3><p>Concepts are explained in short, clear language.</p></div></li>
+        <li><span class="why-ic ci-amber"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-layers"></use></svg></span><div><h3>Resources</h3><p>Energy, water and waste are tracked and scored.</p></div></li>
+        <li><span class="why-ic ci-teal"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-globe"></use></svg></span><div><h3>Climate</h3><p>Every module links back to a real environmental goal.</p></div></li>
+      </ul>
+    </div>
+    <div class="why-visual reveal" aria-hidden="true">
+      <div class="sphere-art">
+        <span class="sa-ring sa1"></span><span class="sa-ring sa2"></span>
+        <span class="sa-core"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-leaf"></use></svg></span>
+        <span class="sa-chip sa-c1">HTML5</span>
+        <span class="sa-chip sa-c2">CSS3</span>
+        <span class="sa-chip sa-c3">JavaScript</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= TECHNOLOGIES USED ======================= -->
+<section class="section" id="stack" aria-labelledby="stackTitle">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg> Technologies Used</p>
+      <h2 id="stackTitle">Built with three web technologies</h2>
+      <p class="section-lead">No frameworks, no backend, no database — just the browser.</p>
+    </header>
+    <div class="grid grid-3">
+      <article class="card stack-card reveal">
+        <span class="stack-badge badge-html">&lt;/&gt;</span>
+        <h3>HTML5</h3>
+        <p>Structure and semantic content — landmarks, headings, forms and ARIA attributes that make the project accessible and machine-readable.</p>
+        <ul class="stack-list"><li>Semantic sections</li><li>Accessible forms</li><li>Inline SVG icons</li></ul>
+      </article>
+      <article class="card stack-card reveal">
+        <span class="stack-badge badge-css">#</span>
+        <h3>CSS3</h3>
+        <p>Visual identity, responsive design, animation and theming — including two purpose-built light and dark palettes driven by custom properties.</p>
+        <ul class="stack-list"><li>CSS variables</li><li>Grid &amp; flexbox</li><li>Keyframe motion</li></ul>
+      </article>
+      <article class="card stack-card reveal">
+        <span class="stack-badge badge-js">JS</span>
+        <h3>JavaScript</h3>
+        <p>Interactivity, calculations, quiz logic, personalisation and dynamic content — all running client-side with no dependencies.</p>
+        <ul class="stack-list"><li>Score engine</li><li>State management</li><li>localStorage</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ABOUT ======================= -->
+<section class="section section-alt" id="about" aria-labelledby="aboutTitle">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-shield"></use></svg> Chapter 08</p>
+      <h2 id="aboutTitle">About EcoSphere</h2>
+    </header>
+
+    <div class="about-grid">
+      <article class="card about-main reveal">
+        <p>
+          EcoSphere is an interactive educational technology project designed around the relationship
+          between climate change and technology. It presents the idea that software, sensors and
+          smart systems can support climate understanding and more efficient use of resources —
+          and it does so entirely inside a web browser.
+        </p>
+        <p>
+          Every module is built as a small lesson: understand the challenge, see the technology,
+          try a tool, and leave with one practical action. The project is designed to be presented,
+          explored and questioned, and it is written to remain fast and dependency-free.
+        </p>
+        <div class="about-meta">
+          <span class="pill"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg> HTML5 · CSS3 · JavaScript</span>
+          <span class="pill"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-monitor"></use></svg> 100% client-side</span>
+          <span class="pill"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-palette"></use></svg> Dual theme</span>
+          <span class="pill"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-users"></use></svg> Fully responsive</span>
+        </div>
+      </article>
+
+      <div class="about-side">
+        <article class="card mv-card reveal">
+          <span class="mv-ic"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-target"></use></svg></span>
+          <h3>Mission</h3>
+          <p>"Turn climate awareness into interactive learning and practical digital solutions."</p>
+        </article>
+        <article class="card mv-card reveal">
+          <span class="mv-ic"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-globe"></use></svg></span>
+          <h3>Vision</h3>
+          <p>"A future where technology helps people understand, manage, and protect the resources around them."</p>
+        </article>
+        <article class="card mv-card reveal">
+          <span class="mv-ic ar-ic" lang="ar" dir="rtl"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-leaf"></use></svg></span>
+          <h3>Mission Statement <span lang="ar" dir="rtl" class="ar-inline">— الرسالة</span></h3>
+          <p lang="ar" dir="rtl">مشروع تعليمي تفاعلي يربط تكنولوجيا المناخ ومستقبل أكثر استدامة.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer" id="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a class="brand" href="#home" aria-label="EcoSphere — back to top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <circle class="bm-globe" cx="24" cy="24" r="19" />
+            <ellipse class="bm-line" cx="24" cy="24" rx="8" ry="19" />
+            <path class="bm-line" d="M5.5 24h37M8 14.5h32M8 33.5h32" />
+            <path class="bm-leaf" d="M38.5 11c-10.6 0-16.4 5.4-16.4 13.7 0 1.6.3 3 .8 4 1.2-6.9 5.2-10.8 10.8-12.2-6.4 2.4-11.2 6.5-13.2 13.3 1.3.6 2.6.8 4 .8 8.8 0 14.7-7.9 14-19.6Z" />
+            <circle class="bm-node" cx="24" cy="5" r="1.8" /><circle class="bm-node" cx="43" cy="24" r="1.8" />
+            <circle class="bm-node" cx="24" cy="43" r="1.8" /><circle class="bm-node" cx="5" cy="24" r="1.8" />
+          </svg>
+        </span>
+        <span class="brand-text"><span class="brand-eco">Eco</span><span class="brand-sphere">Sphere</span></span>
+      </a>
+      <p class="footer-slogan">Technology for a Greener Tomorrow</p>
+      <p class="footer-slogan ar" lang="ar" dir="rtl">تكنولوجيا تصنع مستقبلًا أكثر اخضارًا</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="#home" data-scroll>Home</a></li>
+        <li><a href="#climate" data-scroll>Climate</a></li>
+        <li><a href="#calculator" data-scroll>Eco Calculator</a></li>
+        <li><a href="#technology" data-scroll>Green Technology</a></li>
+        <li><a href="#agriculture" data-scroll>Smart Agriculture</a></li>
+        <li><a href="#transportation" data-scroll>Transportation</a></li>
+        <li><a href="#tips" data-scroll>Eco Tips</a></li>
+        <li><a href="#challenge" data-scroll>Climate Challenge</a></li>
+        <li><a href="#about" data-scroll>About</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-meta">
+      <h3>Technologies Used</h3>
+      <p class="footer-tech">HTML5 <span aria-hidden="true">•</span> CSS3 <span aria-hidden="true">•</span> JavaScript</p>
+      <h3 class="mt">Educational Project</h3>
+      <p>Built for a national high-school competition on climate change and technology.</p>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p class="disclaimer">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alert"></use></svg>
+      Climate figures are quoted from the IPCC Sixth Assessment Report (2023). The Eco Score is a self-assessment exercise, not a scientific measurement.
+    </p>
+    <p class="copy">© <span id="year">2026</span> EcoSphere — Technology for a Greener Tomorrow.</p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top" hidden>
+  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
